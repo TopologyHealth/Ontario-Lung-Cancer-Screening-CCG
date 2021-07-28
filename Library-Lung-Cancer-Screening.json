@@ -1,0 +1,102 @@
+{
+  "resourceType": "Library",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-strengthOfRecommendation",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/recommendation-strength",
+            "code": "strong"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-qualityOfEvidence",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/evidence-quality",
+            "code": "high"
+          }
+        ]
+      }
+    }
+  ],
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library",
+        "display": "Logic Library"
+      }
+    ]
+  },
+  "name": "Lung_Cancer_Screening",
+  "title": "Lung Cancer Screening",
+  "date": "2021-07-28T17:43:17.597Z",
+  "version": "1.0.0",
+  "description": "Ontario Lung Cancer Screening Guideline ",
+  "url": "https://www.cancercareontario.ca/en/guidelines-advice/cancer-continuum/screening/lung-cancer-screening-information",
+  "status": "draft",
+  "publisher": "Ontario Health",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "93880001"
+          }
+        ]
+      }
+    }
+  ],
+  "purpose": "Testing ",
+  "approvalDate": "2021-07-26",
+  "lastReviewDate": "2021-07-26",
+  "topic": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "93880001"
+        }
+      ]
+    }
+  ],
+  "author": [
+    {
+      "name": "Purajuniper"
+    }
+  ],
+  "reviewer": [
+    {
+      "name": "N/A"
+    }
+  ],
+  "endorser": [
+    {
+      "name": "N/A"
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "citation",
+      "display": "Source citation",
+      "url": "https://www.cancercareontario.ca/en/guidelines-advice/cancer-continuum/screening/lung-cancer-screening-information",
+      "citation": "Ontario Health"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/cql",
+      "data": "bGlicmFyeSAiTHVuZy1DYW5jZXItU2NyZWVuaW5nIiB2ZXJzaW9uICcxLjAuMCcNCg0KdXNpbmcgRkhJUiB2ZXJzaW9uICc0LjAuMCcNCg0KaW5jbHVkZSAiRkhJUkhlbHBlcnMiIHZlcnNpb24gJzQuMC4wJyBjYWxsZWQgRkhJUkhlbHBlcnMgDQppbmNsdWRlICJBVF9JbnRlcm5hbF9DRFNfQ29ubmVjdF9Db21tb25zX2Zvcl9GSElSdjQwMCIgdmVyc2lvbiAnMS4wLjEnIGNhbGxlZCBDM0YgDQppbmNsdWRlICJBVF9JbnRlcm5hbF9DRFNfQ29ubmVjdF9Db252ZXJzaW9ucyIgdmVyc2lvbiAnMScgY2FsbGVkIENvbnZlcnQgDQpjb2Rlc3lzdGVtICJMT0lOQyI6ICdodHRwOi8vbG9pbmMub3JnJyANCmNvZGVzeXN0ZW0gIlNOT01FRCI6ICdodHRwOi8vc25vbWVkLmluZm8vc2N0JyANCg0KDQpjb2RlICJUb2JhY2NvIHNtb2tpbmcgc3RhdHVzIGNvZGUiOiAnNzIxNjYtMicgZnJvbSAiTE9JTkMiIGRpc3BsYXkgJ1RvYmFjY28gc21va2luZyBzdGF0dXMnDQoNCmNvZGUgIkV4LXNtb2tlciAoZmluZGluZykgY29kZSI6ICc4NTE3MDA2JyBmcm9tICJTTk9NRUQiIGRpc3BsYXkgJ0V4LXNtb2tlciAoZmluZGluZyknDQoNCmNvZGUgIlNtb2tlciAoZmluZGluZykgY29kZSI6ICc3NzE3NjAwMicgZnJvbSAiU05PTUVEIiBkaXNwbGF5ICdTbW9rZXIgKGZpbmRpbmcpJw0KDQpjb2RlICJDaWdhcmV0dGVzIHNtb2tlZCBjdXJyZW50IChwYWNrIHBlciBkYXkpIC0gUmVwb3J0ZWQgY29kZSI6ICc4NjYzLTcnIGZyb20gIkxPSU5DIiBkaXNwbGF5ICdDaWdhcmV0dGVzIHNtb2tlZCBjdXJyZW50IChwYWNrIHBlciBkYXkpIC0gUmVwb3J0ZWQnDQoNCmNvZGUgIk1hbGlnbmFudCB0dW1vciBvZiBsdW5nIChkaXNvcmRlcikgY29kZSI6ICczNjMzNTgwMDAnIGZyb20gIlNOT01FRCIgZGlzcGxheSAnTWFsaWduYW50IHR1bW9yIG9mIGx1bmcgKGRpc29yZGVyKScNCg0KDQoNCmNvbnRleHQgUGF0aWVudA0KDQpkZWZpbmUgImdlbmVyaWNfb2JzZXJ2YXRpb25fY29uY2VwdHMiOg0KICBbT2JzZXJ2YXRpb246ICJUb2JhY2NvIHNtb2tpbmcgc3RhdHVzIGNvZGUiXQ0KICB1bmlvbiBbT2JzZXJ2YXRpb246ICJDaWdhcmV0dGVzIHNtb2tlZCBjdXJyZW50IChwYWNrIHBlciBkYXkpIC0gUmVwb3J0ZWQgY29kZSJdDQoNCmRlZmluZSAiTW9zdCByZWNlbnQgdG9iYWNjbyBzbW9raW5nIHN0YXR1cyI6DQogIEMzRi5Nb3N0UmVjZW50KFtPYnNlcnZhdGlvbjogIltPYnNlcnZhdGlvbjogIlRvYmFjY28gc21va2luZyBzdGF0dXMgY29kZSJdIl0pDQoNCmRlZmluZSAiRm9ybWVyIHNtb2tlciI6DQogIGV4aXN0cyhbT2JzZXJ2YXRpb246ICJbT2JzZXJ2YXRpb246ICJFeC1zbW9rZXIgKGZpbmRpbmcpIGNvZGUiXSJdKQ0KDQpkZWZpbmUgIkN1cnJlbnQgU21va2VyIjoNCiAgZXhpc3RzKFtPYnNlcnZhdGlvbjogIltPYnNlcnZhdGlvbjogIlNtb2tlciAoZmluZGluZykgY29kZSJdIl0pDQoNCmRlZmluZSAiUGF0aWVudCBBZ2UgYmV0d2VlbiA1NSBhbmQgNzQiOg0KICBBZ2VJblllYXJzKCkgPj0gNTUgYW5kIEFnZUluWWVhcnMoKSA8PSA3NA0KDQpkZWZpbmUgIkNpZ2FyZXR0ZXMgc21va2VkIGN1cnJlbnQgKHBhY2sgcGVyIGRheSkgLSBSZXBvcnRlZCI6DQogIFtPYnNlcnZhdGlvbjogIltPYnNlcnZhdGlvbjogIkNpZ2FyZXR0ZXMgc21va2VkIGN1cnJlbnQgKHBhY2sgcGVyIGRheSkgLSBSZXBvcnRlZCBjb2RlIl0iXQ0KDQpkZWZpbmUgIlBhY2tzUGVyRGF5IjoNCiAgQzNGLkhpZ2hlc3RPYnNlcnZhdGlvbihDM0YuVmVyaWZpZWQoImdlbmVyaWNfb2JzZXJ2YXRpb25fY29uY2VwdHMiKSkNCg0KZGVmaW5lICJObyBMdW5nIENhbmNlciI6DQogIG5vdChleGlzdHMoW0NvbmRpdGlvbjogIltDb25kaXRpb246ICJNYWxpZ25hbnQgdHVtb3Igb2YgbHVuZyAoZGlzb3JkZXIpIGNvZGUiXSJdKSkNCg0KZGVmaW5lICJQYWNrc1BlclllYXIgPj0yMCI6DQogICJQYWNrc1BlckRheSIgPj0gMjAgJy9kJw0KDQoNCmRlZmluZSAiQ3VycmVudCBvciBmb3JtZXIgc21va2VyIEZJTkFMIjoNCiAgIkN1cnJlbnQgb3IgZm9ybWVyIHNtb2tlciINCg0KZGVmaW5lICJQYXRpZW50IEFnZSBiZXR3ZWVuIDU1IGFuZCA3NCBGSU5BTCI6DQogICJQYXRpZW50IEFnZSBiZXR3ZWVuIDU1IGFuZCA3NCINCg0KZGVmaW5lICJQYWNrc1BlclllYXIgPj0yMCBGSU5BTCI6DQogICJQYWNrc1BlclllYXIgPj0yMCINCg0KZGVmaW5lICJDdXJyZW50IG9yIGZvcm1lciBzbW9rZXIiOg0KICAiRm9ybWVyIHNtb2tlciINCiAgb3IgIkN1cnJlbnQgU21va2VyIg0KDQpkZWZpbmUgIk1lZXRzSW5jbHVzaW9uQ3JpdGVyaWEiOg0KICAiQ3VycmVudCBvciBmb3JtZXIgc21va2VyIEZJTkFMIg0KICBhbmQgIlBhdGllbnQgQWdlIGJldHdlZW4gNTUgYW5kIDc0IEZJTkFMIg0KICBhbmQgIlBhY2tzUGVyWWVhciA+PTIwIEZJTkFMIg0KDQpkZWZpbmUgIkluUG9wdWxhdGlvbiI6DQogICAiTWVldHNJbmNsdXNpb25Dcml0ZXJpYSIgDQoNCmRlZmluZSAiUmVjb21tZW5kYXRpb24iOiANCiAgbnVsbA0KDQpkZWZpbmUgIlJhdGlvbmFsZSI6DQogIG51bGwNCg0KZGVmaW5lICJFcnJvcnMiOg0KICBudWxsDQo="
+    }
+  ]
+}
