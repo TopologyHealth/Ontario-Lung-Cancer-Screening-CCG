@@ -21,7 +21,8 @@ define "Most recent tobacco smoking status":
   MostRecent([Observation: "Tobacco smoking status code"])
 
 define "Former smoker":
-  exists([Observation: "Ex-smoker (finding) code"])
+"Most recent tobacco smoking status" O
+  where (O.value as CodeableConcept) ~ "Ex-smoker (finding) code"
 
 define "Current Smoker":
   exists([Observation: "Smoker (finding) code"])

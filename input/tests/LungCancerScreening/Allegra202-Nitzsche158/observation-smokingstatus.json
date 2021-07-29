@@ -1,6 +1,6 @@
 {
   "resourceType": "Observation",
-  "id": "observation-packsaday",
+  "id": "observation-smokingstatus",
   "meta": {
     "versionId": "2",
     "lastUpdated": "2020-03-21T10:28:54.840-06:00",
@@ -11,21 +11,17 @@
     "coding": [
       {
         "system": "http://loinc.org",
-        "code": "8663 -7",
-        "display": "Packs/day"
+        "code": "72166-2",
+        "display": "Tobacco smoking status"
       }
     ]
   },
-  "valueQuantity": {
-    "value": 1.2,
-    "unit": "Packs/day"
-  },
   "subject": {
-    "reference": "Patient/Former-Smoker"
+    "reference": "Patient/Allegra202-Nitzsche158"
   },
   "effectivePeriod": {
     "start": "1960-02-11",
-    "end": "2013-02-02"
+    "end": "2024-02-02"
   },
   "issued": "2014-04-02T00:00:00-07:00",
   "valueCodeableConcept": {
