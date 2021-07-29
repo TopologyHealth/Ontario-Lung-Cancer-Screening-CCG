@@ -25,7 +25,8 @@ define "Former smoker":
   where (O.value as CodeableConcept) ~ "Ex-smoker (finding) code"
 
 define "Current Smoker":
-  exists([Observation: "Smoker (finding) code"])
+"Most recent tobacco smoking status" O
+  where (O.value as CodeableConcept) ~ "Smoker (finding) code"
 
 define "Patient Age between 55 and 74":
   AgeInYears() >= 55 and AgeInYears() <= 74
@@ -56,8 +57,8 @@ define "PacksPerYear >=20":
   "Pack-years" >= 20 '{Pack-Years}'
 
 define "Current or former smoker":
-  "Former smoker"
-  or "Current Smoker"
+  "Former smoker" is not null
+  or "Current Smoker" is not null
 
 define "MeetsInclusionCriteria":
   "Current or former smoker"
