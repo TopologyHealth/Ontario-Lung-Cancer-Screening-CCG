@@ -8,14 +8,10 @@ code "PACKS A DAY": '8663-7' from "LOINC" display 'packs per day'
 code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smoking status'
 code "Ex-smoker (finding) code": '8517006' from "SNOMED" display 'Ex-smoker (finding)'
 code "Smoker (finding) code": '77176002' from "SNOMED" display 'Smoker (finding)'
-code "Cigarettes smoked current (pack per day) - Reported code": '8663-7' from "LOINC" display 'Cigarettes smoked current (pack per day) - Reported'
 code "Malignant tumor of lung (disorder) code": '363358000' from "SNOMED" display 'Malignant tumor of lung (disorder)'
 
 context Patient
 
-define "generic_observation_concepts":
-  [Observation: "Tobacco smoking status code"]
-  union [Observation: "Cigarettes smoked current (pack per day) - Reported code"]
 
 define "Most recent tobacco smoking status":
   MostRecent([Observation: "Tobacco smoking status code"])
@@ -31,8 +27,6 @@ define "Current Smoker":
 define "Patient Age between 55 and 74":
   AgeInYears() >= 55 and AgeInYears() <= 74
 
-define "Cigarettes smoked current (pack per day) - Reported":
-  [Observation: "Cigarettes smoked current (pack per day) - Reported code"]
 
 
 define "No Lung Cancer":
@@ -44,13 +38,13 @@ define "Most recent Packs A Day observation":
 
 define "PacksPerDay":
   "Most recent Packs A Day observation" o
-    return o.value
+    return FHIRHelpers.ToQuantity(o.value)
 
 
 define "Pack-years":
   "Most recent tobacco smoking status" O
      let DurationInDays: duration in days of O.effective
-     return System.Quantity { value: Round(("PacksPerDay" * (DurationInDays / 365.25)).value), unit: '{Pack-years}' }
+     return System.Quantity { value: Round(("PacksPerDay" * (DurationInDays / 365.25)).value), unit: '{Pack-Years}' }
 
 
 define "PacksPerYear >=20":

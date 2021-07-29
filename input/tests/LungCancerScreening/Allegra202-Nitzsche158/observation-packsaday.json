@@ -11,7 +11,7 @@
     "coding": [
       {
         "system": "http://loinc.org",
-        "code": "8663 -7",
+        "code": "8663-7",
         "display": "Packs/day"
       }
     ]
