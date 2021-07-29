@@ -1,4 +1,4 @@
-library "Lung-Cancer-Screening" version '1.0.0'
+library "LungCancerScreening" version '1.0.0'
 using FHIR version '4.0.0'
 include "FHIRHelpers" version '4.0.0' called FHIRHelpers
 codesystem "LOINC": 'http://loinc.org'
