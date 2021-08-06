@@ -13,32 +13,32 @@ Status observation must contain a valueCodeableConcept of a former or current sm
 
 
 The file structure is adapted from the HTNU18IG, and will follow the following format:
+<pre>
+input
+|-- cql
+    |-- LungCancerScreening.cql
+    |-- CQL of any included libraries
+|-- resources
+    |-- library
+       |-- library-LungCancerScreening.json
+       |-- Any included libraries
+|-- tests
+    |-- LungCancerScreening
+        |-- Patient1
+            |-- Patient1.json
+            |-- observation1.json
+            |-- observation2.json
+            |-- ...
+        |-- Patient2
+            |-- ...
+        |-- Patient3
+            |--
+        |-- ...
+|-- pagecontent
+    |-- plandefinition
+        |- plandefinition-LungCancerScreening.json
 
-input\
-|-- cql\
-    |-- LungCancerScreening.cql\
-    |-- CQL of any included libraries\
-|-- resources\
-    |-- library\
-       |-- library-LungCancerScreening.json\
-       |-- Any included libraries\
-|-- tests\
-    |-- LungCancerScreening\
-        |-- Patient1\
-            |-- Patient1.json\
-            |-- observation1.json\
-            |-- observation2.json\
-            |-- ...\
-        |-- Patient2\
-            |-- ...\
-        |-- Patient3\
-            |--\
-        |-- ...\
-|-- pagecontent\
-    |-- plandefinition\
-        |- plandefinition-LungCancerScreening.json\
-
-
+</pre>
 
 
 ## Links
