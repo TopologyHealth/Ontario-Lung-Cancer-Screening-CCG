@@ -65,7 +65,13 @@
   "action": [
     {
       "title": "Lung Cancer Screening",
-
+      "documentation": [
+        {
+          "type": "documentation",
+          "display": "Ontario's Lung Cancer Screening Pathway",
+          "url": "https://www.cancercareontario.ca/en/pathway-maps/lung-cancer"
+        }
+      ],
       "trigger": [
         {
           "type": "named-event",
