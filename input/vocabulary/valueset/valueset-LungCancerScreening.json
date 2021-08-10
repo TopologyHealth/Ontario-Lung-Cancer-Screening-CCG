@@ -1,7 +1,7 @@
 {
   "resourceType": "ValueSet",
   "id": "valueset-ONLungCancer",
-  "url": "http://fhir.org/guides/purajuniper/valueset/LungCancerScreening",
+  "url": "http://fhir.org/guides/purajuniper/valueset/valuese-LungCancerScreening",
   "version": "1",
   "title": "Lung Cancer Screening",
   "status": "draft",
