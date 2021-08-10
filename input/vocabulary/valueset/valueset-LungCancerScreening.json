@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+
+  "url": "http://purajuniper.com/valueset/LungCancerScreening",
+  "version": "1",
+  "title": "Lung Cancer Screening",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Cancer Care Ontaraio",
+  "description": "Valuesets for Lung Cancer Screening",
+
+  "expansion": {
+    "timestamp": "2021-06-22T14:54:25-04:00",
+    "contains": [ {
+      "system": "LOINC",
+      "version": "2021-05",
+      "code": "8663-7",
+      "display": "packs per day"
+    }, {
+      "system": "LOINC",
+      "version": "2021-05",
+      "code": "72166-2",
+      "display": "Tobacco smoking status"
+    },{
+      "system": "SNOMED",
+      "version": "2021-05",
+      "code": "8517006",
+      "display": "Former Smoker"
+    },{
+      "system": "SNOMED",
+      "version": "2021-05",
+      "code": "77176002",
+      "display": "Current Smoker"
+    },{
+      "system": "SNOMED",
+      "version": "2021-05",
+      "code": "363358000",
+      "display": "Lung Tumor"
+    } ]
+  }
+}

@@ -45,7 +45,7 @@
     }
   ],
   "copyright": "© Cancer Care Ontario 2021",
-
+  "library": "http://purajuniper.com/library/LungCancerScreening",
   "action": [
     {
       "title": "Lung Cancer Screening",
@@ -82,6 +82,7 @@
           }
         }
       ],
+
       "action": [
         {
           "title": "Recommendation",

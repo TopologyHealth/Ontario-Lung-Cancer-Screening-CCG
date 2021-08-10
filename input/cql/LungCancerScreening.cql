@@ -4,6 +4,8 @@ include "FHIRHelpers" version '4.0.0' called FHIRHelpers
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 
+valueset "LungCancerValueSet": 'http://purajuniper.com/valueset/LungCancerScreening'
+
 code "PACKS A DAY": '8663-7' from "LOINC" display 'packs per day'
 code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smoking status'
 code "Ex-smoker (finding) code": '8517006' from "SNOMED" display 'Ex-smoker (finding)'
