@@ -4,7 +4,7 @@ include "FHIRHelpers" version '4.0.0' called FHIRHelpers
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 
-valueset "LungCancerValueSet": 'http://purajuniper.com/valueset/LungCancerScreening'
+valueset "LungCancerValueSet": 'http://fhir.org/guides/purajuniper/valueset/LungCancerScreening'
 
 code "PACKS A DAY": '8663-7' from "LOINC" display 'packs per day'
 code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smoking status'
@@ -28,6 +28,11 @@ define "Current Smoker":
 
 define "Patient Age between 55 and 74":
   AgeInYears() >= 55 and AgeInYears() <= 74
+
+define "Patient Name":
+  First(Patient.name.given)
+   + ' ' +
+  First(Patient.name.family)
 
 
 //Makes sure that there are no lung cancer conditions
