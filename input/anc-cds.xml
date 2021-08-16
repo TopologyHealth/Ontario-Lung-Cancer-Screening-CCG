@@ -5,7 +5,7 @@
 <!--  <extension url="http://hl7.org/fhir/tools/StructureDefinition/igpublisher-spreadsheet">
     <valueString value="resources-spreadsheet.xml"/>
   </extension>-->
-  <url value="http://somewhere.org/fhir/uv/mycontentig/ImplementationGuide/example.fhir.uv.mycontentig"/>
+  <url value="http://fhir.org/guides/purajuniper/ONLungCancerScreening/ImplementationGuide/hl7.fhir.us.purajuniper-ONLungCancerScreening"/>
   <!-- This version will propagate to all artifacts unless the "propagate-version" extension is overridden -->
   <version value="0.1.0"/>
   <name value="YourComputableMyContentIGNameHere"/>

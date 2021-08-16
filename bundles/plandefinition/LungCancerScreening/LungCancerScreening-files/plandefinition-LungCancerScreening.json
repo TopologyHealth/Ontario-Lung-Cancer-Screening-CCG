@@ -1,7 +1,7 @@
 {
   "resourceType": "PlanDefinition",
-  "id": "plandefinition-LungCancerScreening",
-  "url": "https://www.cancercareontario.ca/sites/ccocancercare/files/assets/LungCancerDiagnosisPathwayMap.pdf",
+  "id": "plandefinition-ONLungCancerScreening",
+  "url": "http://fhir.org/guides/purajuniper/plandefinition/plandefinition-ONLungCancerScreening",
   "identifier": [
     {
       "use": "official",
@@ -61,11 +61,17 @@
     }
   ],
   "copyright": "© Cancer Care Ontario 2021",
-
+  "library": "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening",
   "action": [
     {
       "title": "Lung Cancer Screening",
-
+      "documentation": [
+        {
+          "type": "documentation",
+          "display": "Ontario's Lung Cancer Screening Pathway",
+          "url": "https://www.cancercareontario.ca/en/pathway-maps/lung-cancer"
+        }
+      ],
       "trigger": [
         {
           "type": "named-event",
@@ -98,6 +104,7 @@
           }
         }
       ],
+
       "action": [
         {
           "title": "Recommendation",
