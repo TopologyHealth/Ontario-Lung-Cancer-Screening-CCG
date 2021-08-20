@@ -1,0 +1,103 @@
+{
+  "resourceType": "ActivityDefinition",
+  "id": "ANCB4",
+  "extension": [ {
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode" : "shareable"
+  }, {
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode" : "computable"
+  }, {
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode" : "publishable"
+  }, {
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel",
+    "valueCode" : "structured"
+  },
+],
+  "url": "http://fhir.org/guides/purajuniper/plandefinition/activitydefinition-referralChestCT",
+  "identifier": [ {
+    "use": "official",
+    "value": "referralChestCT"
+  } ],
+  "name": "referralChestCT",
+  "title": "Refer Patient to Chest CT for Lung Cancer Screening",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-06-08T16:08:55-06:00",
+  "description": "Refer Patient to Chest CT for Lung Cancer Screening using Lung-RADS categories.",
+  "useContext": [ {
+    "code": {
+      "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code": "focus",
+      "display": "Clinical Focus"
+    },
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "http://fhir.org/guides/who/anc-cds/CodeSystem/activity-codes",
+        "code": "ANC.B4",
+        "display": "Confirm pregnancy"
+      } ]
+    }
+  } ],
+  "kind" : "ServiceRequest",
+  "profile" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-servicerequest",
+  "dynamicValue" : [
+    {
+      "path" : "status",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "'draft'"
+      }
+    },
+    {
+      "path" : "intent",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "'proposal'"
+      }
+    },
+    {
+      "path" : "priority",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "'routine'"
+      }
+    },
+    {
+      "path" : "code",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "ServiceCodeableConcept"
+      }
+    },
+    {
+      "path" : "subject",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "Patient"
+      }
+    },
+    {
+      "path" : "encounter",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "Encounter"
+      }
+    },
+    {
+      "path" : "authoredOn",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "Now()"
+      }
+    },
+    {
+      "path" : "performer",
+      "expression" : {
+        "language" : "text/cql",
+        "expression" : "Practitioner"
+      }
+    }
+  ]
+}
