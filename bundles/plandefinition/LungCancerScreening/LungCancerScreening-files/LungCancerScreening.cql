@@ -11,6 +11,10 @@ code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smok
 code "Ex-smoker (finding) code": '8517006' from "SNOMED" display 'Ex-smoker (finding)'
 code "Smoker (finding) code": '77176002' from "SNOMED" display 'Smoker (finding)'
 code "Malignant tumor of lung (disorder) code": '363358000' from "SNOMED" display 'Malignant tumor of lung (disorder)'
+code "Suspected Lung Cancer code": '162573006' from "SNOMED" display 'Suspected Lung Cancer'
+code "Hemoptysis code": '66857006' from "SNOMED" display 'Hemoptysis'
+code "Unexplained Weight Loss code": '422868009' from "SNOMED" display 'Unexplained Weight Loss'
+code "Weight Loss code": '816160009' from "SNOMED" display 'Weight Loss'
 
 context Patient
 
@@ -33,10 +37,6 @@ define "Patient Name":
    + ' ' +
   First(Patient.name.family)
 
-
-//Makes sure that there are no lung cancer conditions
-define "No Lung Cancer":
-  not(exists([Condition: "Malignant tumor of lung (disorder) code"]))
 
 //Takes the most recent observation contained as packs a day
 define "Most recent Packs A Day observation":
@@ -86,14 +86,66 @@ define function MostRecent(ObsList List<Observation>):
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return FHIRHelpers.ToQuantity(O.value as FHIR.Quantity))
 
+// Exclusion criteria
+define function MostRecent(ConList List<Condition>):
+  Last(ConList C sort by
+    (recordedDate as FHIR.dateTime).value
+    )
 
+// diagnosed with lung cancer
+define "Has Lung Cancer":
+  exists([Condition: "Malignant tumor of lung (disorder) code"])
 
+// under surveillance for lung nodules
+define "Suspected Lung Cancer":
+  exists([Condition: "Suspected Lung Cancer code"])
+
+// had hemoptysis of unknown cause or unexplained weight loss of more than 5kg in the past year
+define "Had hemoptysis of unknown cause":
+  exists([Condition: "Hemoptysis code"])
+
+define "Most recent unexplained weight loss":
+  MostRecent([Condition: "Unexplained Weight Loss code"])
+
+define "Had unexplained weight loss in the past year":
+  "Most recent unexplained weight loss" C
+    let I: Interval[FHIRHelpers.ToDateTime(C.recordedDate as FHIR.dateTime), FHIRHelpers.ToDateTime(C.recordedDate as FHIR.dateTime)]
+    return I ends 1 years or less before Today()
+
+define "Most recent weight loss observation":
+  MostRecent([Observation: "Weight Loss code"])
+
+define "Had weight loss of over 5kg":
+  "Most recent weight loss observation" O
+  return O.value >= 5 'kg'
+// TODO: find weight loss within the past year only
+
+define "Had hemoptysis of unknown cause or unexplained weight loss of more than 5kg in the past year":
+    "Had hemoptysis of unknown cause"
+    or (
+      "Had unexplained weight loss in the past year"
+      and "Had weight loss of over 5kg"
+    )
+
+// undergoing assessment, treatment, or surveillance for life-threatening conditions
+
+define "MeetsExclusionCriteria":
+    "Has Lung Cancer"
+    or "Suspected Lung Cancer"
+    or "Had hemoptysis of unknown cause or unexplained weight loss of more than 5kg in the past year"
+
+// if current smoker and no other exclusion criteria, then refer to smoking cessation
+//  regardless of whether they are in the age bracket or not
+define "Refer to smoking cessation":
+  "Current Smoker" is not null
+  and not "MeetsExclusionCriteria"
 
 //All the cds definitions
 
 //Next step: automatically generate that referral
   define "Recommendation":
       if "MeetsInclusionCriteria" then 'Patient applicable for lung cancer screening.'
+      else if "Refer to smoking cessation" then 'Patient not applicable for lung cancer screening, but should be referred to the smoking cessation program'
       else 'Patient not applicable for lung cancer screening.'
 
     define "Rationale Combined Data":

@@ -40,6 +40,26 @@
           "version": "2021-05",
           "code": "363358000",
           "display": "Lung Tumor"
+        }, {
+          "system": "SNOMED",
+          "version": "2021-07",
+          "code": "162573006",
+          "display": "Suspected Lung Cancer"
+        }, {
+          "system": "SNOMED",
+          "version": "2021-07",
+          "code": "66857006",
+          "display": "Hemoptysis"
+        }, {
+          "system": "SNOMED",
+          "version": "2021-07",
+          "code": "422868009",
+          "display": "Unexplained Weight Loss"
+        }, {
+          "system": "SNOMED",
+          "version": "2021-07",
+          "code": "816160009",
+          "display": "Weight Loss"
         } ]
       }
     },
