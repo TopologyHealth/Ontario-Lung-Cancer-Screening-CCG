@@ -1,5 +1,6 @@
 {
-   "resourceType": "CPGServiceRequestActivity",
+   "resourceType": "ActivityDefinition",
+   "id": "activitydefinition-ChestCT",
    "code": {
       "coding": [
          {
@@ -14,13 +15,18 @@
    "intent": "proposal",
    "profile": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-servicerequestactivity",
    "kind": "ServiceRequest",
-   "description": "The definition of a recommendation for a particular procedure or referral to a specialist or instructions for self-care such as smoking cessation counseling or exercise",
+   "description": "The definition of a recommendation for a particular procedure or referral to a Chest CT",
    "publisher": "Health Level Seven, Inc. - CDS WG",
    "experimental": true,
    "status": "draft",
    "name": "cpg-servicerequestactivity",
    "version": "0.01",
    "url": "http://fhir.org/guides/purajuniper/activitydefinition/activitydefinition-referralChestCT",
+   "participant": [
+    {
+      "type": "patient"
+    }
+  ],
    "extension:knowledgeCapability": [
       {
          "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"
