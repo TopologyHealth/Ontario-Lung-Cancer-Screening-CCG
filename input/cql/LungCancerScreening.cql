@@ -145,7 +145,7 @@ define "Refer to smoking cessation":
 //Next step: automatically generate that referral
   define "Recommendation":
       if "MeetsInclusionCriteria" then 'Patient applicable for lung cancer screening.'
-      else if "Refer to smoking cessation" then 'Patient not applicable for lung cancer screening, but should be referred to the smoking cessation program'
+      //else if "Refer to smoking cessation" then 'Patient not applicable for lung cancer screening, but should be referred to the smoking cessation program'
       else 'Patient not applicable for lung cancer screening.'
 
     define "Rationale Combined Data":
@@ -161,11 +161,11 @@ define "Refer to smoking cessation":
 
     define "Source":
       if "MeetsInclusionCriteria" then 'https://www.cancercareontario.ca/sites/ccocancercare/files/assets/LungCancerDiagnosisPathwayMap.pdf'
-      else ''
+      else 'Patient not eligible for Lung Cancer Screening'
 
     define "Suggestions":
       if "MeetsInclusionCriteria" then ''
-      else ''
+      else 'Refer patient for smoking cessation if applicable'
 
     define "Selection Behavior":
       if "MeetsInclusionCriteria" then 'at-most-one'
