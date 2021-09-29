@@ -64,47 +64,18 @@
   "library": "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening",
   "action": [
     {
-      "title": "Lung Cancer Screening",
-      "documentation": [
-        {
-          "type": "documentation",
-          "display": "Ontario's Lung Cancer Screening Pathway",
-          "url": "https://www.cancercareontario.ca/en/pathway-maps/lung-cancer"
-        }
-      ],
-      "trigger": [
-        {
-          "type": "named-event",
-          "name": "patient-view"
-        }
-      ],
+      "title": "Recommendation",
+      "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
       "condition": [
         {
-          "kind": "start",
+          "kind": "applicability",
           "expression": {
+            "description": "Determine if Patient is eligible for screening.",
             "language": "text/cql",
-            "expression": "'true'"
+            "expression": "MeetsInclusionCriteria"
           }
         }
       ],
-      "dynamicValue": [
-        {
-          "path": "action.description",
-          "expression": {
-            "description": "Patient Name.",
-            "language": "text/cql",
-            "expression": "Patient Name"
-          }
-        },
-        {
-          "path": "action.extension",
-          "expression": {
-            "language": "text/cql",
-            "expression": "Info"
-          }
-        }
-      ],
-
       "action": [
         {
           "title": "Recommendation",
@@ -119,32 +90,8 @@
               }
             }
           ],
-          "dynamicValue": [
-            {
-              "path": "action.title",
-              "expression": {
-                "description": "Determines if and what type of recommendation patient should be recommended.",
-                "language": "text/cql",
-                "expression": "Recommendation"
-              }
-            },
-            {
-              "path": "action.description",
-              "expression": {
-                "description": "Rationale for recommendation type.",
-                "language": "text/cql",
-                "expression": "Rationale Combined Data"
-              }
-            },
-            {
-              "path": "action.extension",
-              "expression": {
-                "language": "text/cql",
-                "expression": "Indicator Status"
-              }
+              "definitionCanonical": "http://fhir.org/guides/purajuniper/activitydefinition/activitydefinition-referralChestCT"
             }
-          ]
-        }
       ]
     }
   ]

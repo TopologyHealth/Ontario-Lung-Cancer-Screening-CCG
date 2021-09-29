@@ -27,6 +27,6 @@
 
   "valueQuantity": {
     "value": 1.2,
-    "unit": "Packs/day"
+    "unit": "/d"
   }
 }
