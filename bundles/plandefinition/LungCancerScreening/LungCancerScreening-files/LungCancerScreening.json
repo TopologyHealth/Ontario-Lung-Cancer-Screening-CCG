@@ -1,0 +1,1384 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorOptions" : "",
+         "type" : "CqlToElmInfo"
+      } ],
+      "identifier" : {
+         "id" : "LungCancerScreening",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "4.0.1"
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMED",
+            "id" : "http://snomed.info/sct",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "LungCancerValueSet",
+            "id" : "http://fhir.org/guides/purajuniper/valueset/valueset-ONLungCancerScreening",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "PACKS A DAY",
+            "id" : "8663-7",
+            "display" : "packs per day",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "Tobacco smoking status code",
+            "id" : "72166-2",
+            "display" : "Tobacco smoking status",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "Ex-smoker (finding) code",
+            "id" : "8517006",
+            "display" : "Ex-smoker (finding)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Smoker (finding) code",
+            "id" : "77176002",
+            "display" : "Smoker (finding)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Malignant tumor of lung (disorder) code",
+            "id" : "363358000",
+            "display" : "Malignant tumor of lung (disorder)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Suspected Lung Cancer code",
+            "id" : "162573006",
+            "display" : "Suspected Lung Cancer",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Hemoptysis code",
+            "id" : "66857006",
+            "display" : "Hemoptysis",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Unexplained Weight Loss code",
+            "id" : "422868009",
+            "display" : "Unexplained Weight Loss",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         }, {
+            "name" : "Weight Loss code",
+            "id" : "816160009",
+            "display" : "Weight Loss",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMED"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "MostRecent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Last",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "O",
+                     "expression" : {
+                        "name" : "ObsList",
+                        "type" : "OperandRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "sort" : {
+                     "by" : [ {
+                        "direction" : "asc",
+                        "type" : "ByExpression",
+                        "expression" : {
+                           "type" : "Coalesce",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "name" : "effective",
+                                    "type" : "IdentifierRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}dateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "strict" : false,
+                                 "type" : "As",
+                                 "operand" : {
+                                    "name" : "effective",
+                                    "type" : "IdentifierRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{http://hl7.org/fhir}instant",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "end",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "strict" : false,
+                                    "type" : "As",
+                                    "operand" : {
+                                       "name" : "effective",
+                                       "type" : "IdentifierRef"
+                                    },
+                                    "asTypeSpecifier" : {
+                                       "name" : "{http://hl7.org/fhir}Period",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "start",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "strict" : false,
+                                    "type" : "As",
+                                    "operand" : {
+                                       "name" : "effective",
+                                       "type" : "IdentifierRef"
+                                    },
+                                    "asTypeSpecifier" : {
+                                       "name" : "{http://hl7.org/fhir}Period",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "issued",
+                                 "type" : "IdentifierRef"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "ObsList",
+               "operandTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{http://hl7.org/fhir}Observation",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "MostRecent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Last",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "C",
+                     "expression" : {
+                        "name" : "ConList",
+                        "type" : "OperandRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "sort" : {
+                     "by" : [ {
+                        "direction" : "asc",
+                        "type" : "ByExpression",
+                        "expression" : {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "name" : "recordedDate",
+                                 "type" : "IdentifierRef"
+                              },
+                              "asTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}dateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     } ]
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "ConList",
+               "operandTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{http://hl7.org/fhir}Condition",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "Most recent tobacco smoking status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MostRecent",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}Observation",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Observation",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Tobacco smoking status code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Former smoker",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "O",
+                  "expression" : {
+                     "name" : "Most recent tobacco smoking status",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "Equivalent",
+                  "operand" : [ {
+                     "name" : "ToConcept",
+                     "libraryName" : "FHIRHelpers",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "path" : "value",
+                           "scope" : "O",
+                           "type" : "Property"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{http://hl7.org/fhir}CodeableConcept",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }, {
+                     "type" : "ToConcept",
+                     "operand" : {
+                        "name" : "Ex-smoker (finding) code",
+                        "type" : "CodeRef"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Current Smoker",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "O",
+                  "expression" : {
+                     "name" : "Most recent tobacco smoking status",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "Equivalent",
+                  "operand" : [ {
+                     "name" : "ToConcept",
+                     "libraryName" : "FHIRHelpers",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "strict" : false,
+                        "type" : "As",
+                        "operand" : {
+                           "path" : "value",
+                           "scope" : "O",
+                           "type" : "Property"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{http://hl7.org/fhir}CodeableConcept",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }, {
+                     "type" : "ToConcept",
+                     "operand" : {
+                        "name" : "Smoker (finding) code",
+                        "type" : "CodeRef"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Patient Age between 55 and 74",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "precision" : "Year",
+                     "type" : "CalculateAge",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "55",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "type" : "LessOrEqual",
+                  "operand" : [ {
+                     "precision" : "Year",
+                     "type" : "CalculateAge",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "74",
+                     "type" : "Literal"
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Patient Name",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Concatenate",
+               "operand" : [ {
+                  "type" : "Concatenate",
+                  "operand" : [ {
+                     "name" : "ToString",
+                     "libraryName" : "FHIRHelpers",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "type" : "First",
+                        "source" : {
+                           "type" : "Flatten",
+                           "operand" : {
+                              "type" : "Query",
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "expression" : {
+                                    "path" : "name",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "Patient",
+                                       "type" : "ExpressionRef"
+                                    }
+                                 }
+                              } ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "path" : "given",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef"
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "distinct" : false,
+                                 "expression" : {
+                                    "path" : "given",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef"
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     } ]
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : " ",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "name" : "ToString",
+                  "libraryName" : "FHIRHelpers",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "type" : "First",
+                     "source" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "$this",
+                           "expression" : {
+                              "path" : "name",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        } ],
+                        "where" : {
+                           "type" : "Not",
+                           "operand" : {
+                              "type" : "IsNull",
+                              "operand" : {
+                                 "path" : "family",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "$this",
+                                    "type" : "AliasRef"
+                                 }
+                              }
+                           }
+                        },
+                        "return" : {
+                           "distinct" : false,
+                           "expression" : {
+                              "path" : "family",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "$this",
+                                 "type" : "AliasRef"
+                              }
+                           }
+                        }
+                     }
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Most recent Packs A Day observation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MostRecent",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}Observation",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Observation",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "PACKS A DAY",
+                        "type" : "CodeRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "PacksPerDay",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "o",
+                  "expression" : {
+                     "name" : "Most recent Packs A Day observation",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "name" : "ToQuantity",
+                     "libraryName" : "FHIRHelpers",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "asType" : "{http://hl7.org/fhir}Quantity",
+                        "type" : "As",
+                        "operand" : {
+                           "path" : "value",
+                           "scope" : "o",
+                           "type" : "Property"
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "PacksYears >=20",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Current or former smoker",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Not",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "Former smoker",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "type" : "Not",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "Current Smoker",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "MeetsInclusionCriteria",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Current or former smoker",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Patient Age between 55 and 74",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "name" : "PacksYears >=20",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Verified",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "O",
+                  "expression" : {
+                     "name" : "ObsList",
+                     "type" : "OperandRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "In",
+                  "operand" : [ {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "status",
+                        "scope" : "O",
+                        "type" : "Property"
+                     }
+                  }, {
+                     "type" : "List",
+                     "element" : [ {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "final",
+                        "type" : "Literal"
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "corrected",
+                        "type" : "Literal"
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "amended",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            },
+            "operand" : [ {
+               "name" : "ObsList",
+               "operandTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{http://hl7.org/fhir}Observation",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "HighestObservation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Max",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "O",
+                     "expression" : {
+                        "name" : "ObsList",
+                        "type" : "OperandRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "expression" : {
+                        "name" : "ToQuantity",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "value",
+                              "scope" : "O",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "name" : "{http://hl7.org/fhir}Quantity",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "ObsList",
+               "operandTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{http://hl7.org/fhir}Observation",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "Has Lung Cancer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Condition",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Condition",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Malignant tumor of lung (disorder) code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Suspected Lung Cancer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Condition",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Condition",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Suspected Lung Cancer code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Had hemoptysis of unknown cause",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Condition",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Condition",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Hemoptysis code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Most recent unexplained weight loss",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MostRecent",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}Condition",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Condition",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Unexplained Weight Loss code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Had unexplained weight loss in the past year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "C",
+                  "expression" : {
+                     "name" : "Most recent unexplained weight loss",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ {
+                  "identifier" : "I",
+                  "expression" : {
+                     "lowClosed" : true,
+                     "highClosed" : true,
+                     "type" : "Interval",
+                     "low" : {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "recordedDate",
+                              "scope" : "C",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "name" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     },
+                     "high" : {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "recordedDate",
+                              "scope" : "C",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "name" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "I",
+                              "type" : "QueryLetRef"
+                           }
+                        }, {
+                           "type" : "Interval",
+                           "low" : {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "path" : "low",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "lowClosed" : true,
+                                    "highClosed" : false,
+                                    "type" : "Interval",
+                                    "low" : {
+                                       "type" : "Subtract",
+                                       "operand" : [ {
+                                          "type" : "Today"
+                                       }, {
+                                          "value" : 1,
+                                          "unit" : "years",
+                                          "type" : "Quantity"
+                                       } ]
+                                    },
+                                    "high" : {
+                                       "type" : "Today"
+                                    }
+                                 }
+                              }
+                           },
+                           "lowClosedExpression" : {
+                              "path" : "lowClosed",
+                              "type" : "Property",
+                              "source" : {
+                                 "lowClosed" : true,
+                                 "highClosed" : false,
+                                 "type" : "Interval",
+                                 "low" : {
+                                    "type" : "Subtract",
+                                    "operand" : [ {
+                                       "type" : "Today"
+                                    }, {
+                                       "value" : 1,
+                                       "unit" : "years",
+                                       "type" : "Quantity"
+                                    } ]
+                                 },
+                                 "high" : {
+                                    "type" : "Today"
+                                 }
+                              }
+                           },
+                           "high" : {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "path" : "high",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "lowClosed" : true,
+                                    "highClosed" : false,
+                                    "type" : "Interval",
+                                    "low" : {
+                                       "type" : "Subtract",
+                                       "operand" : [ {
+                                          "type" : "Today"
+                                       }, {
+                                          "value" : 1,
+                                          "unit" : "years",
+                                          "type" : "Quantity"
+                                       } ]
+                                    },
+                                    "high" : {
+                                       "type" : "Today"
+                                    }
+                                 }
+                              }
+                           },
+                           "highClosedExpression" : {
+                              "path" : "highClosed",
+                              "type" : "Property",
+                              "source" : {
+                                 "lowClosed" : true,
+                                 "highClosed" : false,
+                                 "type" : "Interval",
+                                 "low" : {
+                                    "type" : "Subtract",
+                                    "operand" : [ {
+                                       "type" : "Today"
+                                    }, {
+                                       "value" : 1,
+                                       "unit" : "years",
+                                       "type" : "Quantity"
+                                    } ]
+                                 },
+                                 "high" : {
+                                    "type" : "Today"
+                                 }
+                              }
+                           }
+                        } ]
+                     }, {
+                        "type" : "Not",
+                        "operand" : {
+                           "type" : "IsNull",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Most recent weight loss observation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "MostRecent",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}Observation",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Observation",
+                  "codeProperty" : "code",
+                  "codeComparator" : "~",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "type" : "ToList",
+                     "operand" : {
+                        "name" : "Weight Loss code",
+                        "type" : "CodeRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Had weight loss of over 5kg",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "O",
+                  "expression" : {
+                     "name" : "Most recent weight loss observation",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "name" : "ToQuantity",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "asType" : "{http://hl7.org/fhir}Quantity",
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "value",
+                              "scope" : "O",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "value" : 5,
+                        "unit" : "kg",
+                        "type" : "Quantity"
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Had hemoptysis of unknown cause or unexplained weight loss of more than 5kg in the past year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "name" : "Had hemoptysis of unknown cause",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Had unexplained weight loss in the past year",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Had weight loss of over 5kg",
+                     "type" : "ExpressionRef"
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "MeetsExclusionCriteria",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "name" : "Has Lung Cancer",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Suspected Lung Cancer",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "name" : "Had hemoptysis of unknown cause or unexplained weight loss of more than 5kg in the past year",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Refer to smoking cessation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "Not",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "Current Smoker",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "type" : "Not",
+                  "operand" : {
+                     "name" : "MeetsExclusionCriteria",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Recommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Patient applicable for lung cancer screening.",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "If",
+                  "condition" : {
+                     "name" : "Refer to smoking cessation",
+                     "type" : "ExpressionRef"
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Patient not applicable for lung cancer screening, but should be referred to the smoking cessation program",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Patient not applicable for lung cancer screening.",
+                     "type" : "Literal"
+                  }
+               }
+            }
+         }, {
+            "name" : "Rationale",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "The patient is a current or former smoker between the ages of 55 and 74 with over 20 pack-years",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "No Further Action Required.",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "name" : "Source",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "https://www.cancercareontario.ca/sites/ccocancercare/files/assets/LungCancerDiagnosisPathwayMap.pdf",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "name" : "Suggestions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "name" : "Selection Behavior",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "at-most-one",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "at-most-one",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "name" : "Rationale Combined Data",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Concatenate",
+               "operand" : [ {
+                  "type" : "Concatenate",
+                  "operand" : [ {
+                     "type" : "Concatenate",
+                     "operand" : [ {
+                        "type" : "Concatenate",
+                        "operand" : [ {
+                           "type" : "Concatenate",
+                           "operand" : [ {
+                              "type" : "Concatenate",
+                              "operand" : [ {
+                                 "name" : "Rationale",
+                                 "type" : "ExpressionRef"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : ";",
+                                 "type" : "Literal"
+                              } ]
+                           }, {
+                              "name" : "Source",
+                              "type" : "ExpressionRef"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : ";",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "name" : "Suggestions",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : ";",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "name" : "Selection Behavior",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Info",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "info",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Indicator Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "name" : "MeetsInclusionCriteria",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "name" : "Info",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "name" : "Info",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Warning",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "warning",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Critical",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "critical",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Errors",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Null"
+            }
+         } ]
+      }
+   }
+}
+

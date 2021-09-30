@@ -1,7 +1,7 @@
 {
   "resourceType": "PlanDefinition",
   "id": "plandefinition-ONLungCancerScreening",
-  "url": "http://fhir.org/guides/purajuniper/plandefinition/plandefinition-ONLungCancerScreening",
+  "url": "http://fhir.org/guides/purajuniper/PlanDefinition/plandefinition-ONLungCancerScreening",
   "identifier": [
     {
       "use": "official",
@@ -90,7 +90,7 @@
               }
             }
           ],
-              "definitionCanonical": "http://fhir.org/guides/purajuniper/activitydefinition/activitydefinition-referralChestCT"
+              "definitionCanonical": "http://fhir.org/guides/purajuniper/ActivityDefinition/activitydefinition-referralChestCT"
             }
       ]
     }

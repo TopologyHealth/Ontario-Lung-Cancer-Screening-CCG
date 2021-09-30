@@ -21,7 +21,7 @@
    "status": "draft",
    "name": "cpg-servicerequestactivity",
    "version": "0.01",
-   "url": "http://fhir.org/guides/purajuniper/activitydefinition/activitydefinition-referralChestCT",
+   "url": "http://fhir.org/guides/purajuniper/ActivityDefinition/activitydefinition-smokingcessation",
    "participant": [
     {
       "type": "patient"

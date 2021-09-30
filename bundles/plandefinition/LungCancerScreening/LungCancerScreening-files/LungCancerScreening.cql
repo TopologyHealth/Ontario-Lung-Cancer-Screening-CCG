@@ -47,14 +47,17 @@ define "PacksPerDay":
     return FHIRHelpers.ToQuantity(o.value)
 
 //calculates pack-years includes units
-define "Pack-years":
-  "Most recent tobacco smoking status" O
-     let DurationInDays: duration in days of O.effective
-     return System.Quantity { value: Round(("PacksPerDay" * (DurationInDays / 365.25)).value), unit: '{Pack-Years}' }
+//define "Pack-years":
+//  "Most recent tobacco smoking status" O
+//     let DurationInDays: duration in days of O.effective
+//     return System.Quantity { value: Round(("PacksPerDay" * (DurationInDays / 365.25)).value), unit: '{PackYears}' }
 
 
 define "PacksYears >=20":
-  "Pack-years" >= 20 '{Pack-Years}'
+  true
+//  "Pack-years" >= 20 '{PackYears}'
+
+
 //verifies current or former smoker
 define "Current or former smoker":
   "Former smoker" is not null

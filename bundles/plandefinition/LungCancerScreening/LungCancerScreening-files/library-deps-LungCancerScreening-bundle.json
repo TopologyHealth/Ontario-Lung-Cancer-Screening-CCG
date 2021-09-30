@@ -5,11 +5,11 @@
   "entry": [ {
     "resource": {
       "resourceType": "Library",
-      "id": "library-FHIRHelpers",
+      "id": "FHIRHelpers",
       "extension": [ {
         "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
         "valueReference": {
-          "reference": "cqf-tooling"
+          "reference": "Device/cqf-tooling"
         }
       } ],
       "url": "http://hl7.org/fhir/Library/FHIRHelpers",
@@ -30,7 +30,7 @@
     },
     "request": {
       "method": "PUT",
-      "url": "Library/library-FHIRHelpers"
+      "url": "Library/FHIRHelpers"
     }
   } ]
 }
