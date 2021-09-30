@@ -61,7 +61,7 @@
     }
   ],
   "copyright": "© Cancer Care Ontario 2021",
-  "library": "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening",
+  "library": [ "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening" ],
   "action": [
     {
       "title": "Recommendation",
