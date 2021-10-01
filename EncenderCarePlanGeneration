@@ -1,0 +1,56 @@
+[{
+    "resourceType": "CarePlan",
+    "id": "-1",
+    "subject": {
+      "reference": "Patient/Allegra202-Nitzsche158",
+      "display": "undefined undefined"
+    },
+    "instantiatesCanonical": "http://fhir.org/guides/purajuniper/PlanDefinition/plandefinition-ONLungCancerScreening",
+    "intent": "proposal",
+    "status": "draft",
+    "activity": [{
+      "reference": {
+        "reference": "RequestGroup/0"
+      }
+    }]
+  }, {
+    "resourceType": "RequestGroup",
+    "id": "0",
+    "subject": {
+      "reference": "Patient/Allegra202-Nitzsche158",
+      "display": "undefined undefined"
+    },
+    "instantiatesCanonical": "http://fhir.org/guides/purajuniper/PlanDefinition/plandefinition-ONLungCancerScreening",
+    "intent": "proposal",
+    "status": "draft",
+    "action": [{
+      "id": "1",
+      "title": "Recommendation",
+      "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
+      "action": [{
+        "id": "2",
+        "title": "Recommendation",
+        "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
+        "resource": "ServiceRequest/3"
+      }]
+    }]
+  },
+  [{
+    "id": "3",
+    "subject": {
+      "reference": "Patient/Allegra202-Nitzsche158",
+      "display": "undefined undefined"
+    },
+    "resourceType": "ServiceRequest",
+    "status": "option",
+    "code": {
+      "coding": [{
+        "system": "SNOMED",
+        "version": "2021-07",
+        "code": "169069000",
+        "display": "Chest CT"
+      }]
+    },
+    "doNotPerform": "false"
+  }]
+]
