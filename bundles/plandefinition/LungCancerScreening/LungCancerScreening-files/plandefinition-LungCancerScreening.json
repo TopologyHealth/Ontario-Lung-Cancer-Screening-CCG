@@ -62,37 +62,17 @@
   ],
   "copyright": "© Cancer Care Ontario 2021",
   "library": [ "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening" ],
-  "action": [
-    {
-      "title": "Recommendation",
-      "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
-      "condition": [
-        {
+  "action": [ {
+        "title": "Recommendation",
+        "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
+        "condition": [ {
           "kind": "applicability",
           "expression": {
             "description": "Determine if Patient is eligible for screening.",
             "language": "text/cql",
             "expression": "MeetsInclusionCriteria"
           }
-        }
-      ],
-      "action": [
-        {
-          "title": "Recommendation",
-          "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
-          "condition": [
-            {
-              "kind": "applicability",
-              "expression": {
-                "description": "Determine if Patient is eligible for screening.",
-                "language": "text/cql",
-                "expression": "MeetsInclusionCriteria"
-              }
-            }
-          ],
-              "definitionCanonical": "http://fhir.org/guides/purajuniper/ActivityDefinition/activitydefinition-referralChestCT"
-            }
-      ]
-    }
-  ]
+        } ],
+        "definitionCanonical": "http://fhir.org/guides/purajuniper/ActivityDefinition/activitydefinition-referralChestCT"
+      } ]
 }
