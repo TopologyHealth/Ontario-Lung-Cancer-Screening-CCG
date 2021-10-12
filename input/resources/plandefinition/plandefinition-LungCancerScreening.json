@@ -64,7 +64,7 @@
   "library": [ "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening" ],
   "action": [ {
         "title": "Refer to Chest CT",
-        "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
+        "description": "Patient is eligible for lung cancer screening and should be referred for a Chest CT.",
         "condition": [ {
           "kind": "applicability",
           "expression": {

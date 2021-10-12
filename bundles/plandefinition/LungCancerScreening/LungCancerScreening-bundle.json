@@ -54,12 +54,12 @@
       } ],
       "library": [ "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening" ],
       "action": [ {
-        "title": "Recommendation",
-        "description": "Determines type of recommendation regarding status of Lung Cancer Screening eligibility.",
+        "title": "Refer to Chest CT",
+        "description": "Patient is eligible for lung cancer screening and should be referred for a Chest CT.",
         "condition": [ {
           "kind": "applicability",
           "expression": {
-            "description": "Determine if Patient is eligible for screening.",
+            "description": "Patient is eligible for lung cancer screening and should be referred for a Chest CT.",
             "language": "text/cql",
             "expression": "MeetsInclusionCriteria"
           }
@@ -309,7 +309,7 @@
       }, {
         "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
         "valueReference": {
-          "reference": "cqf-tooling"
+          "reference": "Device/cqf-tooling"
         }
       } ],
       "url": "http://fhir.org/guides/purajuniper/ONLungCancerScreening/Library/LungCancerScreening",
@@ -718,11 +718,6 @@
         "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
         "valueReference": {
           "reference": "Device/cqf-tooling"
-        }
-      }, {
-        "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
-        "valueReference": {
-          "reference": "cqf-tooling"
         }
       } ],
       "url": "http://hl7.org/fhir/Library/FHIRHelpers",
