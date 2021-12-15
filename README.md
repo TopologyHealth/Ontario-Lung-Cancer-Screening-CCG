@@ -12,7 +12,7 @@ Status observation must contain a valueCodeableConcept of a former or current sm
 **DO NOT PUT ANY INFORMATION INSIDE COMPONENTS**
 
 
-The file structure is adapted from the HTNU18IG, and will follow the following format:
+The file structure will follow the following format:
 <pre>
 input
 |-- cql
